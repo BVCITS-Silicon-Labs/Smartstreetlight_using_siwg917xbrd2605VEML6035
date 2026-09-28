@@ -1,0 +1,80 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: smartstreetlight
+label: smartstreetlight
+description: |
+  This application demonstrates how to configure VEML6035 Ambient Light Sensor
+category: example|peripheral
+package: platform_siwx91x_app
+quality: production
+readme:
+- path: readme.md
+source:
+- path: app.c
+- path: veml6035_example.c
+include:
+- path: .
+  file_list:
+  - path: app.h
+  - path: veml6035_example.h
+sdk:
+  vendor: silabs
+  id: simplicity_sdk
+  version: 2025.12.2
+toolchain_settings:
+- value: -Wall -Werror
+  option: gcc_compiler_option
+component:
+- package: simplicity_sdk
+  vendor: silabs
+  id: sl_main
+- package: simplicity_sdk
+  vendor: silabs
+  id: sleeptimer
+- package: simplicity_sdk
+  vendor: silabs
+  id: status
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: SIWG917M111MGTBA
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: brd2605a
+- package: wiseconnect3_sdk
+  instance:
+  - i2c2
+  vendor: silabs
+  id: i2c_instance
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: si91x_memory_default_config
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_dma
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_gpio
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_i2c
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_veml6035
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: syscalls
+other_file:
+- path: resources/readme/setupdiagram.png
+- path: resources/readme/console_output_veml6035.png
+- path: resources/uc_screen/veml6035_uc_screen.png
+ui_hints:
+  highlight:
+  - path: readme.md
+    focus: true
+sdk_extension:
+- vendor: silabs
+  id: wiseconnect3_sdk
+  version: 4.0.1
+post_build:
+- path: smartstreetlight.slpb
+  profile: wiseconnect_soc
+
